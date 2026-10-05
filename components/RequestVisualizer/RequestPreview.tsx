@@ -1,5 +1,6 @@
 import { MethodConfig } from "@/types/method";
 import { METHOD_STYLES } from "@/lib/method-styles";
+import { CodeSnippet } from "./CodeSnippet";
 
 interface RequestPreviewProps {
   config: MethodConfig;
@@ -91,6 +92,8 @@ export function RequestPreview({ config, onSend }: RequestPreviewProps) {
           )}
         </div>
       </div>
+
+      <CodeSnippet config={config} />
 
       <button
         onClick={onSend}

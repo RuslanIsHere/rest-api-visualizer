@@ -13,7 +13,7 @@ It's a pet project — small scope, focused purpose: make HTTP methods click.
 Pick any HTTP method from the sidebar (GET, POST, PUT, PATCH, DELETE) and step through three stages:
 
 **1 — Preview**
-Shows the complete request: endpoint with context (`collection` vs `resource by ID`), headers with inline explanations, and a body annotated field by field. The annotations make the critical differences visible — for example, PUT marks every field as "required — omit and this field gets erased", while PATCH marks only the changed field as "only this changes — the rest stays as-is".
+Shows the complete request: endpoint with context (`collection` vs `resource by ID`), headers with inline explanations, and a body annotated field by field. The annotations make the critical differences visible — for example, PUT marks every field as "required — omit and this field gets erased", while PATCH marks only the changed field as "only this changes — the rest stays as-is". Below it, a copyable cURL / `fetch` snippet generated from the same config lets you replay the exact request in your terminal or browser console.
 
 **2 — Sending**
 An animated visualization: a colored dot travels from CLIENT to SERVER along a method-colored trail, the server node pulses while processing, then a dot returns with the response.
@@ -56,11 +56,13 @@ lib/
   api-methods.ts          ← one MethodConfig object per HTTP method
   fetch-demo.ts           ← fetch wrapper returning a typed FetchResult
   method-styles.ts        ← per-method Tailwind color classes, single source
+  snippets.ts             ← cURL / fetch code generated from a MethodConfig
 components/
   MethodList/             ← method selector sidebar
   RequestVisualizer/      ← 3-step state machine (preview → flow → response)
     StepIndicator         ← progress dots
     RequestPreview        ← annotated request structure + send button
+    CodeSnippet           ← cURL / fetch tabs with copy button
     RequestFlow           ← CSS-animated client ↔ server visualization
     ResponseView          ← status code, body, contextual note
 app/                      ← Next.js layout, Geist Mono font, global styles
@@ -77,5 +79,4 @@ app/                      ← Next.js layout, Geist Mono font, global styles
 ## Possible next steps
 
 - Syntax highlighting for JSON bodies
-- cURL / fetch snippet panel per method
 - Side-by-side PUT vs PATCH comparison
