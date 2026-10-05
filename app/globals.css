@@ -11,3 +11,13 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+@keyframes dot-travel-right {
+  from { left: 0; }
+  to { left: calc(100% - 0.5rem); }
+}
+
+@keyframes dot-travel-left {
+  from { right: 0; }
+  to { right: calc(100% - 0.5rem); }
+}
